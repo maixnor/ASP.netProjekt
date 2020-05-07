@@ -18,9 +18,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
+        @* TODO add picture*@
+        @*<th>
             @Html.DisplayNameFor(model => model.Picture)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -32,9 +33,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Picture)
-        </td>
+        @* TODO add picture*@
+        @*<td>
+            <img alt="picture" src="~/Images/@item.Picture.ToString().Substring(10)"/>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
             @Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |

@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using WebProject;
@@ -17,9 +21,23 @@ namespace WebProject.Controllers
         // GET: Categories
         public ActionResult Index()
         {
+            // TODO
+            //foreach (var item in db.Categories)
+            //{
+            //    stringToImage(item.Picture).Save("Images/" + item.Picture.ToString().Substring(10), ImageFormat.Png);
+            //}
             return View(db.Categories.ToList());
         }
 
+        public Image stringToImage(byte[] imageBytes) // TODO
+        {
+            // Don't need to use the constructor that takes the starting offset and length
+            // as we're using the whole byte array.
+            MemoryStream ms = new MemoryStream(imageBytes);
+            Image image = Image.FromStream(ms, true);
+            return image;
+        }
+    
         // GET: Categories/Details/5
         public ActionResult Details(int? id)
         {
