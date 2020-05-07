@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.netProject", "ASP.netProject\ASP.netProject.csproj", "{3820BCCB-1F53-4795-8A42-88487A69B8A9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebProject", "WebProject\WebProject.csproj", "{9667151B-2B49-47DB-A975-5CB5D647C284}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3820BCCB-1F53-4795-8A42-88487A69B8A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3820BCCB-1F53-4795-8A42-88487A69B8A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3820BCCB-1F53-4795-8A42-88487A69B8A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3820BCCB-1F53-4795-8A42-88487A69B8A9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9667151B-2B49-47DB-A975-5CB5D647C284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9667151B-2B49-47DB-A975-5CB5D647C284}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9667151B-2B49-47DB-A975-5CB5D647C284}.Release|Any CPU.ActiveCfg = Release|Any CPU
