@@ -137,7 +137,14 @@
     <Compile Include="Category_Sales_for_1997.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\RegionsController.cs" />
+    <Compile Include="Controllers\ShippersController.cs" />
+    <Compile Include="Controllers\SuppliersController.cs" />
+    <Compile Include="Controllers\TerritoriesController.cs" />
     <Compile Include="Current_Product_List.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -308,6 +315,41 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Regions\Create.cshtml" />
+    <Content Include="Views\Regions\Delete.cshtml" />
+    <Content Include="Views\Regions\Details.cshtml" />
+    <Content Include="Views\Regions\Edit.cshtml" />
+    <Content Include="Views\Regions\Index.cshtml" />
+    <Content Include="Views\Shippers\Create.cshtml" />
+    <Content Include="Views\Shippers\Delete.cshtml" />
+    <Content Include="Views\Shippers\Details.cshtml" />
+    <Content Include="Views\Shippers\Edit.cshtml" />
+    <Content Include="Views\Shippers\Index.cshtml" />
+    <Content Include="Views\Suppliers\Create.cshtml" />
+    <Content Include="Views\Suppliers\Delete.cshtml" />
+    <Content Include="Views\Suppliers\Details.cshtml" />
+    <Content Include="Views\Suppliers\Edit.cshtml" />
+    <Content Include="Views\Suppliers\Index.cshtml" />
+    <Content Include="Views\Territories\Create.cshtml" />
+    <Content Include="Views\Territories\Delete.cshtml" />
+    <Content Include="Views\Territories\Details.cshtml" />
+    <Content Include="Views\Territories\Edit.cshtml" />
+    <Content Include="Views\Territories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
