@@ -12,6 +12,9 @@
 </p>
 <table class="table">
     <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.CategoryName)
         </th>
@@ -29,6 +32,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CategoryID)
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.CategoryName)
         </td>
@@ -40,7 +46,7 @@
             <img alt="picture" src="~/Images/@item.Picture.ToString().Substring(10)"/>
         </td>*@
         <td>
-            TODO
+            @Html.DisplayFor(modelItem => item.Count)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
