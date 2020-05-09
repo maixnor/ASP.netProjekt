@@ -11,7 +11,9 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,15 +24,45 @@ namespace WebProject
         }
     
         public string CustomerID { get; set; }
+
+        [DisplayName("Shipper")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]       
         public string CompanyName { get; set; }
+
+        [DisplayName("Name")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string ContactName { get; set; }
+
+        [DisplayName("Title")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string ContactTitle { get; set; }
+
+        [DisplayName("Address")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string Address { get; set; }
+
+        [DisplayName("City")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string City { get; set; }
+
+        [DisplayName("Region")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string Region { get; set; }
+
+        [DisplayName("Postal Code")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string PostalCode { get; set; }
+
+        [DisplayName("Country")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string Country { get; set; }
+
+        [DisplayName("Phone")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string Phone { get; set; }
+
+        [DisplayName("Fax")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string Fax { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

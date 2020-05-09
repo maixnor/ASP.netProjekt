@@ -11,7 +11,9 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,22 +25,72 @@ namespace WebProject
         }
     
         public int EmployeeID { get; set; }
+
+        [DisplayName("Last Name")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string LastName { get; set; }
+
+        [DisplayName("First name")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string FirstName { get; set; }
+
+        [DisplayName("Title")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string Title { get; set; }
+
+        [DisplayName("Title of Courtesy")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string TitleOfCourtesy { get; set; }
+
+        [DisplayName("Birthdate")]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.DateTime, ErrorMessage = "must be a date")]
         public Nullable<System.DateTime> BirthDate { get; set; }
+
+        [DisplayName("Hiredate")]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.DateTime, ErrorMessage = "must be a date")]
         public Nullable<System.DateTime> HireDate { get; set; }
+
+        [DisplayName("Address")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string Address { get; set; }
+
+        [DisplayName("City")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string City { get; set; }
+
+        [DisplayName("Region")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string Region { get; set; }
+
+        [DisplayName("Postal Code")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string PostalCode { get; set; }
+
+        [DisplayName("Country")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string Country { get; set; }
+
+        [DisplayName("Home Phone")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string HomePhone { get; set; }
+
+        [DisplayName("Extension")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string Extension { get; set; }
+
+        [DisplayName("Photo")]
         public byte[] Photo { get; set; }
+
+        [DisplayName("Notes")]
+        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
         public string Notes { get; set; }
+
+        [DisplayName("Boss")]
+        [Range(0, int.MaxValue, ErrorMessage = "must be a valid id")]
         public Nullable<int> ReportsTo { get; set; }
+
+        [DisplayName("Address")]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.ImageUrl, ErrorMessage = "must be a link to an image")]
         public string PhotoPath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

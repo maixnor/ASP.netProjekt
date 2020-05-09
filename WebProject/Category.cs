@@ -11,6 +11,8 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
     public partial class Category
@@ -21,10 +23,19 @@ namespace WebProject
             this.Products = new HashSet<Product>();
         }
     
-        public int Count { get { return (from t in Products where t.Category.CategoryID == CategoryID select t).ToList().Count; } }
         public int CategoryID { get; set; }
+
+        [DisplayName("Count")]
+        public int Count { get { return (from t in Products where t.Category.CategoryID == CategoryID select t).ToList().Count; } }
+
+        [Range(0, int.MaxValue, ErrorMessage = "cannot be smaller than 0")]
+        [DisplayName("Category")]
         public string CategoryName { get; set; }
+
+        [DisplayName("Description")]
         public string Description { get; set; }
+
+        [DisplayName("Picture")]
         public byte[] Picture { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
