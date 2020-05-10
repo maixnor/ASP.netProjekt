@@ -50,7 +50,7 @@ namespace WebProject
         [DisplayName("Freight")]
         public Nullable<decimal> Freight { get; set; }
 
-        [DisplayName("Name")]
+        [DisplayName("Where To")]
         [StringLength(1, ErrorMessage = "must be a valid customer id")]
         public string ShipName { get; set; }
 

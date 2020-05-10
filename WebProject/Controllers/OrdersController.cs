@@ -15,11 +15,13 @@ namespace WebProject.Controllers
         private Northwind db = new Northwind();
 
         // GET: Orders
-        public ActionResult Index(int? shipper)
+        public ActionResult Index(int? shipper, int? order)
         {
             var orders = db.Orders.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Shipper);
             if (shipper != null)
                 orders = orders.Where(t => t.Shipper.ShipperID == shipper);
+            if (order != null)
+                orders = orders.Where(t => t.OrderID == order); 
             return View(orders.ToList());
         }
 
