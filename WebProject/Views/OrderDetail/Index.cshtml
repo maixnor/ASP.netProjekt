@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.Product.ProductName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", new { product = item.ProductID, order = item.OrderID }) |
+                @Html.ActionLink("Details", "Details", new { product = item.ProductID, order = item.OrderID }) |
+                @Html.ActionLink("Delete", "Delete", new { product = item.ProductID, order = item.OrderID }) |
                 @Html.ActionLink("Product", "Index", "Products", new { product = item.ProductID }, null) |
                 @Html.ActionLink("Order", "Index", "Orders", new { order = item.OrderID }, null)
             </td>

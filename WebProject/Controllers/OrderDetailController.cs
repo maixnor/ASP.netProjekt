@@ -22,13 +22,17 @@ namespace WebProject.Controllers
         }
 
         // GET: OrderDetail/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? order, int? product)
         {
-            if (id == null)
+            if (order == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order_Detail order_Detail = db.Order_Details.Find(id);
+            if (product == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order_Detail order_Detail = db.Order_Details.Find(order, product);
             if (order_Detail == null)
             {
                 return HttpNotFound();
@@ -64,13 +68,17 @@ namespace WebProject.Controllers
         }
 
         // GET: OrderDetail/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? order, int? product)
         {
-            if (id == null)
+            if (order == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order_Detail order_Detail = db.Order_Details.Find(id);
+            if (product == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order_Detail order_Detail = db.Order_Details.Find(order, product);
             if (order_Detail == null)
             {
                 return HttpNotFound();
@@ -99,13 +107,17 @@ namespace WebProject.Controllers
         }
 
         // GET: OrderDetail/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? order, int? product)
         {
-            if (id == null)
+            if (order == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order_Detail order_Detail = db.Order_Details.Find(id);
+            if (product == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order_Detail order_Detail = db.Order_Details.Find(order, product);
             if (order_Detail == null)
             {
                 return HttpNotFound();
@@ -116,9 +128,9 @@ namespace WebProject.Controllers
         // POST: OrderDetail/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? order, int? product)
         {
-            Order_Detail order_Detail = db.Order_Details.Find(id);
+            Order_Detail order_Detail = db.Order_Details.Find(order, product);
             db.Order_Details.Remove(order_Detail);
             db.SaveChanges();
             return RedirectToAction("Index");

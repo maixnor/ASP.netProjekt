@@ -26,7 +26,7 @@ namespace WebProject
         [Range(0, int.MaxValue, ErrorMessage = "must be a valid interger")]
         public int ProductID { get; set; }
 
-        [DisplayName("Name")]
+        [DisplayName("Product Name")]
         [StringLength(2, ErrorMessage = "this field must be longer than 2")]
         public string ProductName { get; set; }
 
