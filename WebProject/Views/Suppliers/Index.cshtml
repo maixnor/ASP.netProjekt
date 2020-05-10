@@ -87,7 +87,7 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.SupplierID }) |
             @Html.ActionLink("Details", "Details", new { id=item.SupplierID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.SupplierID }) |
-            @Html.ActionLink("Products", "Index", "Products", new { company = item.SupplierID }, null)
+            @Html.ActionLink("Products", "Index", "Products", new { supplier = item.SupplierID }, null)
         </td>
     </tr>
 }

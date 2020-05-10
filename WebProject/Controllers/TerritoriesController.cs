@@ -15,9 +15,11 @@ namespace WebProject.Controllers
         private Northwind db = new Northwind();
 
         // GET: Territories
-        public ActionResult Index()
+        public ActionResult Index(int? region)
         {
             var territories = db.Territories.Include(t => t.Region);
+            if (region != null)
+                territories = territories.Where(t => t.RegionID == region);
             return View(territories.ToList());
         }
 
