@@ -11,7 +11,9 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
+
     public partial class Shipper
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,9 +21,17 @@ namespace WebProject
         {
             this.Orders = new HashSet<Order>();
         }
-    
+
+        [DisplayName("Id")]
+        [Range(0, int.MaxValue, ErrorMessage = "must be a valid integer")]
         public int ShipperID { get; set; }
+
+        [DisplayName("Name")]
+        [StringLength(2, ErrorMessage = "this field must be longer than 2")]
         public string CompanyName { get; set; }
+
+        [DisplayName("Phone")]
+        [StringLength(2, ErrorMessage = "this field must be longer than 2")]
         public string Phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
