@@ -15,9 +15,13 @@ namespace WebProject.Controllers
         private Northwind db = new Northwind();
 
         // GET: OrderDetail
-        public ActionResult Index()
+        public ActionResult Index(int? product, int? order)
         {
             var order_Details = db.Order_Details.Include(o => o.Order).Include(o => o.Product);
+            if (product != null)
+                order_Details = order_Details.Where(t => t.OrderID == product);
+            if (order != null)
+                order_Details = order_Details.Where(t => t.OrderID == order);
             return View(order_Details.ToList());
         }
 
