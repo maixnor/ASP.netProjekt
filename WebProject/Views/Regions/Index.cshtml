@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -18,18 +18,19 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegionDescription)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RegionID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RegionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RegionID }) |
-            @Html.ActionLink("Territories", "Index", "Territories", new { region = item.RegionID }, null)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegionDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RegionID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RegionID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RegionID }) |
+                @Html.ActionLink("Territories", "Index", "Territories", new { region = item.RegionID }, null)
+            </td>
+        </tr>
+    }
 
 </table>
