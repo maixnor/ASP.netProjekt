@@ -21,7 +21,7 @@ namespace WebProject
         public int OrderID { get; set; }
 
         [DisplayName("Product Id")]
-        [Range(0, int.MaxValue, ErrorMessage = "must be a valid interger")]
+        [Range(0, int.MaxValue, ErrorMessage = "must be positive integer")]
         public int ProductID { get; set; }
 
         [DisplayName("Price per Unit")]

@@ -27,7 +27,7 @@ namespace WebProject
         public int ProductID { get; set; }
 
         [DisplayName("Product Name")]
-        [StringLength(2, ErrorMessage = "this field must be longer than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ProductName { get; set; }
 
         [DisplayName("Supplier Id")]
@@ -39,6 +39,7 @@ namespace WebProject
         public Nullable<int> CategoryID { get; set; }
 
         [DisplayName("Quantity per unit")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string QuantityPerUnit { get; set; }
 
         [DisplayName("Price per unit")]

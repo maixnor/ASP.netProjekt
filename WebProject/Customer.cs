@@ -26,43 +26,43 @@ namespace WebProject
         public string CustomerID { get; set; }
 
         [DisplayName("Shipper")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]       
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string CompanyName { get; set; }
 
         [DisplayName("Name")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ContactName { get; set; }
 
         [DisplayName("Title")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ContactTitle { get; set; }
 
         [DisplayName("Address")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Address { get; set; }
 
         [DisplayName("City")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string City { get; set; }
 
         [DisplayName("Region")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Region { get; set; }
 
         [DisplayName("Postal Code")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string PostalCode { get; set; }
 
         [DisplayName("Country")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Country { get; set; }
 
         [DisplayName("Phone")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Phone { get; set; }
 
         [DisplayName("Fax")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Fax { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

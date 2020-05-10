@@ -28,11 +28,12 @@ namespace WebProject
         [DisplayName("Count")]
         public int Count { get { return (from t in Products where t.Category.CategoryID == CategoryID select t).ToList().Count; } }
 
-        [Range(0, int.MaxValue, ErrorMessage = "cannot be smaller than 0")]
         [DisplayName("Category")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string CategoryName { get; set; }
 
         [DisplayName("Description")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Description { get; set; }
 
         [DisplayName("Picture")]

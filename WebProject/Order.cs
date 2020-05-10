@@ -25,7 +25,7 @@ namespace WebProject
         public int OrderID { get; set; }
 
         [DisplayName("Customer")]
-        [StringLength(1, ErrorMessage = "must be a valid customer id")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string CustomerID { get; set; }
 
         [DisplayName("Employee")]
@@ -51,27 +51,27 @@ namespace WebProject
         public Nullable<decimal> Freight { get; set; }
 
         [DisplayName("Where To")]
-        [StringLength(1, ErrorMessage = "must be a valid customer id")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipName { get; set; }
 
         [DisplayName("Address")]
-        [StringLength(1, ErrorMessage = "must be a valid customer id")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipAddress { get; set; }
 
         [DisplayName("City")]
-        [StringLength(1, ErrorMessage = "must be a valid customer id")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipCity { get; set; }
 
         [DisplayName("Region")]
-        [StringLength(1, ErrorMessage = "must be a valid customer id")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipRegion { get; set; }
 
         [DisplayName("Postal Code")]
-        [StringLength(1, ErrorMessage = "must be a valid customer id")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipPostalCode { get; set; }
 
         [DisplayName("Country")]
-        [StringLength(1, ErrorMessage = "must be a valid customer id")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipCountry { get; set; }
 
         [DisplayName("Customer")]    

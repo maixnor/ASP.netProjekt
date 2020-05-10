@@ -11,7 +11,9 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Region
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +21,14 @@ namespace WebProject
         {
             this.Territories = new HashSet<Territory>();
         }
-    
+
+
+        [DisplayName("ID")]
+        [Range(0, int.MaxValue, ErrorMessage = "must be a valid integer")]
         public int RegionID { get; set; }
+
+        [DisplayName("Region Description")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string RegionDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

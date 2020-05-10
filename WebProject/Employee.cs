@@ -27,19 +27,19 @@ namespace WebProject
         public int EmployeeID { get; set; }
 
         [DisplayName("Last Name")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string LastName { get; set; }
 
         [DisplayName("First name")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string FirstName { get; set; }
 
         [DisplayName("Title")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Title { get; set; }
 
         [DisplayName("Title of Courtesy")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string TitleOfCourtesy { get; set; }
 
         [DisplayName("Birthdate")]
@@ -51,38 +51,38 @@ namespace WebProject
         public Nullable<System.DateTime> HireDate { get; set; }
 
         [DisplayName("Address")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Address { get; set; }
 
         [DisplayName("City")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string City { get; set; }
 
         [DisplayName("Region")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Region { get; set; }
 
         [DisplayName("Postal Code")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string PostalCode { get; set; }
 
         [DisplayName("Country")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Country { get; set; }
 
         [DisplayName("Home Phone")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string HomePhone { get; set; }
 
         [DisplayName("Extension")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Extension { get; set; }
 
         [DisplayName("Photo")]
         public byte[] Photo { get; set; }
 
         [DisplayName("Notes")]
-        [StringLength(2, ErrorMessage = "this field cannot be shorter than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Notes { get; set; }
 
         [DisplayName("Boss")]

@@ -27,11 +27,11 @@ namespace WebProject
         public int ShipperID { get; set; }
 
         [DisplayName("Name")]
-        [StringLength(2, ErrorMessage = "this field must be longer than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string CompanyName { get; set; }
 
         [DisplayName("Phone")]
-        [StringLength(2, ErrorMessage = "this field must be longer than 2")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
