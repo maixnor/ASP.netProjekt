@@ -19,7 +19,7 @@ namespace WebProject.Controllers
         {
             var order_Details = db.Order_Details.Include(o => o.Order).Include(o => o.Product);
             if (product != null)
-                order_Details = order_Details.Where(t => t.OrderID == product);
+                order_Details = order_Details.Where(t => t.ProductID == product);
             if (order != null)
                 order_Details = order_Details.Where(t => t.OrderID == order);
             return View(order_Details.ToList());
