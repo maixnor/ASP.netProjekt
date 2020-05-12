@@ -69,7 +69,15 @@ namespace WebProject
         [DisplayName("Home Page")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string HomePage { get; set; }
-    
+
+        [DisplayName("Username")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
+        public string Username { get; set; }
+
+        [DisplayName("Password")]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Password, ErrorMessage = "must be a password")]
+        public string Password { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
     }
