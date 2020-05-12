@@ -139,6 +139,10 @@
     </Compile>
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\DashCustomerController.cs" />
+    <Compile Include="Controllers\DashEmployeeController.cs" />
+    <Compile Include="Controllers\DashShipperController.cs" />
+    <Compile Include="Controllers\DashSupplierController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderDetailController.cs" />
@@ -314,7 +318,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -368,6 +372,30 @@
     <Content Include="Views\OrderDetail\Details.cshtml" />
     <Content Include="Views\OrderDetail\Edit.cshtml" />
     <Content Include="Views\OrderDetail\Index.cshtml" />
+    <Content Include="Views\DashEmployee\Create.cshtml" />
+    <Content Include="Views\DashEmployee\Delete.cshtml" />
+    <Content Include="Views\DashEmployee\Details.cshtml" />
+    <Content Include="Views\DashEmployee\Edit.cshtml" />
+    <Content Include="Views\DashEmployee\Index.cshtml" />
+    <Content Include="Views\DashSupplier\Create.cshtml" />
+    <Content Include="Views\DashSupplier\Delete.cshtml" />
+    <Content Include="Views\DashSupplier\Details.cshtml" />
+    <Content Include="Views\DashSupplier\Edit.cshtml" />
+    <Content Include="Views\DashSupplier\Index.cshtml" />
+    <Content Include="Views\DashShipper\Create.cshtml" />
+    <Content Include="Views\DashShipper\Delete.cshtml" />
+    <Content Include="Views\DashShipper\Details.cshtml" />
+    <Content Include="Views\DashShipper\Edit.cshtml" />
+    <Content Include="Views\DashShipper\Index.cshtml" />
+    <Content Include="Views\DashCustomer\Create.cshtml" />
+    <Content Include="Views\DashCustomer\Delete.cshtml" />
+    <Content Include="Views\DashCustomer\Details.cshtml" />
+    <Content Include="Views\DashCustomer\Edit.cshtml" />
+    <Content Include="Views\DashCustomer\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutEmployee.cshtml" />
+    <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
+    <Content Include="Views\Shared\_LayoutSupplier.cshtml" />
+    <Content Include="Views\Shared\_LayoutShipper.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
