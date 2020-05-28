@@ -1,16 +1,24 @@
 ﻿@model WebProject.Order
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Customer - Login";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
+
+    <div class="jumbotron">
+        <h2>Welcome Customer</h2>
+        <p>We need a Username</p>
+        @Html.TextBox("Username")
+        <p>And a password too</p>
+        @Html.TextBox("Password")
+    </div>
     
     <div class="form-horizontal">
         <h4>Order</h4>
