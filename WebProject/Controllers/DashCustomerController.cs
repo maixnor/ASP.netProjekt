@@ -10,6 +10,7 @@ using WebProject;
 
 namespace WebProject.Controllers
 {
+    [Authorize]
     public class DashCustomerController : Controller
     {
         private Northwind db = new Northwind();
@@ -41,6 +42,7 @@ namespace WebProject.Controllers
             return View(order);
         }
 
+        [AllowAnonymous]
         // GET: DashCustomer/Create
         public ActionResult Create()
         {
@@ -53,6 +55,7 @@ namespace WebProject.Controllers
         // POST: DashCustomer/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [AllowAnonymous]    
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "OrderID,CustomerID,EmployeeID,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry")] Order order)

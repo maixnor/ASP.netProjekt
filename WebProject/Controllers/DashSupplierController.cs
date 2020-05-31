@@ -10,6 +10,7 @@ using WebProject;
 
 namespace WebProject.Controllers
 {
+    [Authorize]
     public class DashSupplierController : Controller
     {
         private Northwind db = new Northwind();
@@ -42,6 +43,7 @@ namespace WebProject.Controllers
         }
 
         // GET: DashSupplier/Create
+        [AllowAnonymous]
         public ActionResult Create()
         {
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
@@ -52,6 +54,7 @@ namespace WebProject.Controllers
         // POST: DashSupplier/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductID,ProductName,SupplierID,CategoryID,QuantityPerUnit,UnitPrice,UnitsInStock,UnitsOnOrder,ReorderLevel,Discontinued")] Product product)

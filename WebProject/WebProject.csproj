@@ -397,6 +397,7 @@
     <Content Include="Views\Shared\_LayoutSupplier.cshtml" />
     <Content Include="Views\Shared\_LayoutShipper.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\ForceLogout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

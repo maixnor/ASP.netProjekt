@@ -10,6 +10,7 @@ using WebProject;
 
 namespace WebProject.Controllers
 {
+    [Authorize]
     public class DashShipperController : Controller
     {
         private Northwind db = new Northwind();
@@ -42,6 +43,7 @@ namespace WebProject.Controllers
         }
 
         // GET: DashShipper/Create
+        [AllowAnonymous]
         public ActionResult Create()
         {
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName");
@@ -53,6 +55,7 @@ namespace WebProject.Controllers
         // POST: DashShipper/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "OrderID,CustomerID,EmployeeID,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry")] Order order)

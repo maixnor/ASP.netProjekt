@@ -10,6 +10,7 @@ using WebProject;
 
 namespace WebProject.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         private Northwind db = new Northwind();

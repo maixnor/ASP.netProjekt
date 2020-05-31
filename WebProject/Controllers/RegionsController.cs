@@ -10,6 +10,7 @@ using WebProject;
 
 namespace WebProject.Controllers
 {
+    [Authorize]
     public class RegionsController : Controller
     {
         private Northwind db = new Northwind();

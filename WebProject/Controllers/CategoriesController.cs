@@ -14,6 +14,7 @@ using WebProject;
 
 namespace WebProject.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private Northwind db = new Northwind();

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "ForceLogout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="jumbotron">
+    <h1>Session expired</h1>
+    <p>Something is wrong with your session. You have been logged out.</p>
+    <p>You can login again.</p>
+    @Html.ActionLink("Return to Login Page", "Index", "Home", new { }, null)
+</div>
+
+
