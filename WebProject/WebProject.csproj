@@ -387,7 +387,7 @@
     <Content Include="Views\DashShipper\Details.cshtml" />
     <Content Include="Views\DashShipper\Edit.cshtml" />
     <Content Include="Views\DashShipper\Index.cshtml" />
-    <Content Include="Views\DashCustomer\Create.cshtml" />
+    <Content Include="Views\DashCustomer\Login.cshtml" />
     <Content Include="Views\DashCustomer\Delete.cshtml" />
     <Content Include="Views\DashCustomer\Details.cshtml" />
     <Content Include="Views\DashCustomer\Edit.cshtml" />
@@ -398,6 +398,10 @@
     <Content Include="Views\Shared\_LayoutShipper.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\ForceLogout.cshtml" />
+    <Content Include="Views\DashCustomer\Create.cshtml" />
+    <Content Include="Views\DashEmployee\Login.cshtml" />
+    <Content Include="Views\DashShipper\Login.cshtml" />
+    <Content Include="Views\DashSupplier\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

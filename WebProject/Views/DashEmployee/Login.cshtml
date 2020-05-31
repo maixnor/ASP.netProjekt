@@ -1,0 +1,37 @@
+﻿@model WebProject.Order
+
+@{
+    ViewBag.Title = "Employee - Login";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="jumbotron">
+        <h2>Welcome Employee</h2>
+        <p>We need a Username</p>
+        @Html.TextBox("Username")
+        <p>And a password too</p>
+        @Html.TextBox("Password")
+        <p></p>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Log Me In!" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    
+}
+
+<div>
+    @Html.ActionLink("Not an employee?", "Index", "Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
