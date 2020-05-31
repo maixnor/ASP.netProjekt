@@ -15,6 +15,12 @@ namespace WebProject.Controllers
     {
         private Northwind db = new Northwind();
 
+        [AllowAnonymous]
+        public ActionResult Login(string username, string password)
+        {
+            return View();
+        }
+
         // GET: DashShipper
         public ActionResult Index(int? shipper)
         {
