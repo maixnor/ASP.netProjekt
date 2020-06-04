@@ -402,6 +402,7 @@
     <Content Include="Views\DashEmployee\Login.cshtml" />
     <Content Include="Views\DashShipper\Login.cshtml" />
     <Content Include="Views\DashSupplier\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

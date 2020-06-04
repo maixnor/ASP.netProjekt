@@ -18,6 +18,17 @@ namespace WebProject.Controllers
         [AllowAnonymous]
         public ActionResult Login(string username, string password)
         {
+            if (ModelState.IsValid)
+            {
+                if (username == password)
+                {
+                    
+                }
+                else
+                {
+
+                }
+            }
             return View();
         }
 
