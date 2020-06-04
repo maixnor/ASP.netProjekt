@@ -200,6 +200,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginGeneric.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -387,7 +388,7 @@
     <Content Include="Views\DashShipper\Details.cshtml" />
     <Content Include="Views\DashShipper\Edit.cshtml" />
     <Content Include="Views\DashShipper\Index.cshtml" />
-    <Content Include="Views\DashCustomer\Login.cshtml" />
+    <Content Include="Views\DashCustomer\LoginOld.cshtml" />
     <Content Include="Views\DashCustomer\Delete.cshtml" />
     <Content Include="Views\DashCustomer\Details.cshtml" />
     <Content Include="Views\DashCustomer\Edit.cshtml" />
@@ -404,9 +405,7 @@
     <Content Include="Views\DashSupplier\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

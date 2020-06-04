@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebProject;
+using WebProject.Models;
 
 namespace WebProject.Controllers
 {
@@ -16,21 +18,40 @@ namespace WebProject.Controllers
         private Northwind db = new Northwind();
 
         [AllowAnonymous]
-        public ActionResult Login(string username, string password)
+        public ActionResult Login()
         {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginGeneric login, string returnUrl)
+        {
+            Customer customer;
             if (ModelState.IsValid)
             {
-                if (username == password)
+                using (var db = new Northwind())
                 {
-                    
+                    var erg = from t in db.Customers
+                              where t.Username == login.Username && t.Password == login.Password
+                              select t;
+                    customer = erg.FirstOrDefault();
+                }
+                if (login.Username == login.Password)
+                {
+                    FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
+                    Session["cid"] = customer.CustomerID;
+                    return RedirectToLocal(returnUrl);
                 }
                 else
                 {
-
+                    ModelState.AddModelError("", "Invalid username or password");
                 }
             }
             return View();
         }
+
 
         // GET: DashCustomer
         public ActionResult Index(string customer)
@@ -160,6 +181,18 @@ namespace WebProject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Login", "Customer");
+            }
         }
     }
 }
