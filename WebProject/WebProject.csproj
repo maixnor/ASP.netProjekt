@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\DashAdmin.cs" />
     <Compile Include="Controllers\DashCustomerController.cs" />
     <Compile Include="Controllers\DashEmployeeController.cs" />
     <Compile Include="Controllers\DashShipperController.cs" />
@@ -388,7 +389,6 @@
     <Content Include="Views\DashShipper\Details.cshtml" />
     <Content Include="Views\DashShipper\Edit.cshtml" />
     <Content Include="Views\DashShipper\Index.cshtml" />
-    <Content Include="Views\DashCustomer\LoginOld.cshtml" />
     <Content Include="Views\DashCustomer\Delete.cshtml" />
     <Content Include="Views\DashCustomer\Details.cshtml" />
     <Content Include="Views\DashCustomer\Edit.cshtml" />
@@ -404,6 +404,12 @@
     <Content Include="Views\DashShipper\Login.cshtml" />
     <Content Include="Views\DashSupplier\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\DashCustomer\Login.cshtml" />
+    <Content Include="Views\DashAdmin\Create.cshtml" />
+    <Content Include="Views\DashAdmin\Delete.cshtml" />
+    <Content Include="Views\DashAdmin\Details.cshtml" />
+    <Content Include="Views\DashAdmin\Edit.cshtml" />
+    <Content Include="Views\DashAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
