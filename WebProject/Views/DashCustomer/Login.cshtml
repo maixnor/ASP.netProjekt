@@ -1,39 +1,54 @@
-﻿@model WebProject.Order
+﻿@model WebProject.Models.LoginGeneric
 
 @{
-    ViewBag.Title = "Customer - Login";
-    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "LoginNew";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
-    <div class="jumbotron">
-        <h2>Welcome Customer</h2>
-        <p>We need a Username</p>
-        @Html.TextBox("Username")
-        <p>And a password too</p>
-        @Html.TextBox("Password")
-        <p>Remember me?</p>
-        @Html.CheckBox("RememberMe")
-        <p></p>
+    
+    <div class="form-horizontal">
+        <h4>LoginGeneric</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="submit" value="Log Me In!" class="btn btn-default" />
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.RememberMe)
+                    @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
-
 }
 
 <div>
-    @Html.ActionLink("Not a customer?", "Index", "Home")
+    @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
