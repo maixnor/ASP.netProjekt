@@ -33,8 +33,10 @@ namespace WebProject.Controllers
             {
                 using (var db = new Northwind())
                 {
+                    string username = login.UserName;
+                    string password = login.Password;
                     var erg = from t in db.Customers
-                              where t.Username == login.UserName&& t.Password == login.Password
+                              where t.Username == username && t.Password == password
                               select t;
                    
                     customer = erg.FirstOrDefault();
