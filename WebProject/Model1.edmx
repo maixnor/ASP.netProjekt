@@ -891,6 +891,8 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
           <NavigationProperty Name="CustomerDemographics" Relationship="Self.CustomerCustomerDemo" FromRole="Customers" ToRole="CustomerDemographics" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -918,6 +920,8 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <NavigationProperty Name="Employee1" Relationship="Self.FK_Employees_Employees" FromRole="Employees1" ToRole="Employees" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Employees" FromRole="Employees" ToRole="Orders" />
           <NavigationProperty Name="Territories" Relationship="Self.EmployeeTerritories" FromRole="Employees" ToRole="Territories" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Order_Detail">
           <Key>
@@ -989,6 +993,8 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="CompanyName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Shippers" FromRole="Shippers" ToRole="Orders" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -1007,6 +1013,8 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="HomePage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Suppliers" FromRole="Suppliers" ToRole="Products" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>

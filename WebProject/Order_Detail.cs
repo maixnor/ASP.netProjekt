@@ -11,32 +11,16 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel;
-
+    
     public partial class Order_Detail
     {
-
-        [DisplayName("Order Id")]
         public int OrderID { get; set; }
-
-        [DisplayName("Product Id")]
-        [Range(0, int.MaxValue, ErrorMessage = "must be positive integer")]
         public int ProductID { get; set; }
-
-        [DisplayName("Price per Unit")]
         public decimal UnitPrice { get; set; }
-
-        [DisplayName("Quantity")]
         public short Quantity { get; set; }
-
-        [DisplayName("Discount")]
         public float Discount { get; set; }
-        
-        [DisplayName("Order")]
+    
         public virtual Order Order { get; set; }
-
-        [DisplayName("Product")]
         public virtual Product Product { get; set; }
     }
 }

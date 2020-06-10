@@ -34,13 +34,15 @@ namespace WebProject.Controllers
                 using (var db = new Northwind())
                 {
                     var erg = from t in db.Customers
-                              where t.Username == login.Username && t.Password == login.Password
+                              where t.Username == login.UserName&& t.Password == login.Password
                               select t;
+                   
                     customer = erg.FirstOrDefault();
+                    
                 }
-                if (login.Username == login.Password)
+                if (login.UserName == login.Password)
                 {
-                    FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
+                    FormsAuthentication.SetAuthCookie(login.UserName, login.RememberMe);
                     Session["cid"] = customer.CustomerID;
                     return RedirectToLocal(returnUrl);
                 }

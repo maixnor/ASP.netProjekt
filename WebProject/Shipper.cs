@@ -11,9 +11,7 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel;
-
+    
     public partial class Shipper
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,27 +19,13 @@ namespace WebProject
         {
             this.Orders = new HashSet<Order>();
         }
-
-        [DisplayName("Id")]
-        [Range(0, int.MaxValue, ErrorMessage = "must be a valid integer")]
+    
         public int ShipperID { get; set; }
-
-        [DisplayName("Name")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string CompanyName { get; set; }
-
-        [DisplayName("Phone")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Phone { get; set; }
-
-        [DisplayName("Username")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Username { get; set; }
-
-        [DisplayName("Password")]
-        [DataType(System.ComponentModel.DataAnnotations.DataType.Password, ErrorMessage = "must be a password")]
         public string Password { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
     }
