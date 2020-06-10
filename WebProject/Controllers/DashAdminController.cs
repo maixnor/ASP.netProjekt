@@ -10,7 +10,7 @@ using WebProject;
 
 namespace WebProject.Controllers
 {
-    public class DashAdmin : Controller
+    public class DashAdminController : Controller
     {
         private Northwind db = new Northwind();
 

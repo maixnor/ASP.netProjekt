@@ -139,7 +139,7 @@
     </Compile>
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
-    <Compile Include="Controllers\DashAdmin.cs" />
+    <Compile Include="Controllers\DashAdminController.cs" />
     <Compile Include="Controllers\DashCustomerController.cs" />
     <Compile Include="Controllers\DashEmployeeController.cs" />
     <Compile Include="Controllers\DashShipperController.cs" />
