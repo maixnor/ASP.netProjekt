@@ -14,7 +14,6 @@ namespace WebProject
     
     public partial class Alphabetical_list_of_product
     {
-
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public Nullable<int> SupplierID { get; set; }

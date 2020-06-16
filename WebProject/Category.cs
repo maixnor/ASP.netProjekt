@@ -11,10 +11,7 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-
+    
     public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,19 +21,8 @@ namespace WebProject
         }
     
         public int CategoryID { get; set; }
-
-        [DisplayName("Count")]
-        public int Count { get { return (from t in Products where t.Category.CategoryID == CategoryID select t).ToList().Count; } }
-
-        [DisplayName("Category")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string CategoryName { get; set; }
-
-        [DisplayName("Description")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Description { get; set; }
-
-        [DisplayName("Picture")]
         public byte[] Picture { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

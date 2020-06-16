@@ -11,8 +11,6 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel;
     
     public partial class Product
     {
@@ -21,49 +19,21 @@ namespace WebProject
         {
             this.Order_Details = new HashSet<Order_Detail>();
         }
-
-        [DisplayName("Id")]
-        [Range(0, int.MaxValue, ErrorMessage = "must be a valid interger")]
+    
         public int ProductID { get; set; }
-
-        [DisplayName("Product Name")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ProductName { get; set; }
-
-        [DisplayName("Supplier Id")]
-        [Range(0, int.MaxValue, ErrorMessage = "must be a valid integer")]
         public Nullable<int> SupplierID { get; set; }
-
-        [DisplayName("Category Id")]
-        [Range(0, int.MaxValue, ErrorMessage = "must be a valid integer")]
         public Nullable<int> CategoryID { get; set; }
-
-        [DisplayName("Quantity per unit")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string QuantityPerUnit { get; set; }
-
-        [DisplayName("Price per unit")]
         public Nullable<decimal> UnitPrice { get; set; }
-
-        [DisplayName("Units in stock")]
         public Nullable<short> UnitsInStock { get; set; }
-
-        [DisplayName("Units already orderd")]
         public Nullable<short> UnitsOnOrder { get; set; }
-
-        [DisplayName("Reorder Level")]
         public Nullable<short> ReorderLevel { get; set; }
-
-        [DisplayName("Discontinued")]
         public bool Discontinued { get; set; }
-
-        [DisplayName("Category")]    
+    
         public virtual Category Category { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Detail> Order_Details { get; set; }
-
-        [DisplayName("Supplier")]
         public virtual Supplier Supplier { get; set; }
     }
 }

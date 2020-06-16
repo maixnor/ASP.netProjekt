@@ -33,16 +33,21 @@ namespace WebProject.Controllers
             {
                 using (var db = new Northwind())
                 {
+                    string username = login.UserName;
+                    string password = login.Password;
                     var erg = from t in db.Customers
-                              where t.Username == login.Username && t.Password == login.Password
+                              where t.Username == username && t.Password == password
                               select t;
+                   
                     customer = erg.FirstOrDefault();
+                    
                 }
-                if (login.Username == login.Password)
+                if (login.UserName == login.Password)
                 {
-                    FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
+                    FormsAuthentication.SetAuthCookie(login.UserName, login.RememberMe);
                     Session["cid"] = customer.CustomerID;
-                    return RedirectToLocal(returnUrl);
+                    RedirectToAction("Index", "DashCustomer");
+                    //return RedirectToLocal(returnUrl);
                 }
                 else
                 {
@@ -191,7 +196,7 @@ namespace WebProject.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Customer");
+                return RedirectToAction("Login", "DashCustomer");
             }
         }
     }

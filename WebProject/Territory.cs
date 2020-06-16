@@ -11,9 +11,7 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Territory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,17 +19,9 @@ namespace WebProject
         {
             this.Employees = new HashSet<Employee>();
         }
-
-        [DisplayName("ID")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
+    
         public string TerritoryID { get; set; }
-
-        [DisplayName("Description")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string TerritoryDescription { get; set; }
-
-        [DisplayName("Region ID")]
-        [Range(0, int.MaxValue, ErrorMessage = "must be a valid integer")]
         public int RegionID { get; set; }
     
         public virtual Region Region { get; set; }

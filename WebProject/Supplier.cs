@@ -11,9 +11,7 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Supplier
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,62 +20,21 @@ namespace WebProject
             this.Products = new HashSet<Product>();
         }
     
-        [DisplayName("ID")]
-        [Range(0, int.MaxValue, ErrorMessage = "must be a valid integer")]
         public int SupplierID { get; set; }
-
-        [DisplayName("Company Name")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string CompanyName { get; set; }
-
-        [DisplayName("Contact Name")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ContactName { get; set; }
-
-        [DisplayName("Contact Title")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ContactTitle { get; set; }
-
-        [DisplayName("Address")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Address { get; set; }
-
-        [DisplayName("City")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string City { get; set; }
-
-        [DisplayName("Region")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Region { get; set; }
-
-        [DisplayName("Postal Code")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string PostalCode { get; set; }
-
-        [DisplayName("Country")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Country { get; set; }
-
-        [DisplayName("Phone")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Phone { get; set; }
-
-        [DisplayName("Fax")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Fax { get; set; }
-
-        [DisplayName("Home Page")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string HomePage { get; set; }
-
-        [DisplayName("Username")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string Username { get; set; }
-
-        [DisplayName("Password")]
-        [DataType(System.ComponentModel.DataAnnotations.DataType.Password, ErrorMessage = "must be a password")]
         public string Password { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
     }

@@ -11,8 +11,6 @@ namespace WebProject
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel;
     
     public partial class Order
     {
@@ -23,67 +21,24 @@ namespace WebProject
         }
     
         public int OrderID { get; set; }
-
-        [DisplayName("Customer")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string CustomerID { get; set; }
-
-        [DisplayName("Employee")]
         public Nullable<int> EmployeeID { get; set; }
-
-        [DisplayName("Order Date")]
-        [DataType(System.ComponentModel.DataAnnotations.DataType.DateTime, ErrorMessage = "must be a date")]
         public Nullable<System.DateTime> OrderDate { get; set; }
-
-        [DisplayName("Required Date")]
-        [DataType(System.ComponentModel.DataAnnotations.DataType.DateTime, ErrorMessage = "must be a date")]
         public Nullable<System.DateTime> RequiredDate { get; set; }
-
-        [DisplayName("Shipped Date")]
-        [DataType(System.ComponentModel.DataAnnotations.DataType.DateTime, ErrorMessage = "must be a date")]
         public Nullable<System.DateTime> ShippedDate { get; set; }
-
-        [DisplayName("Shipped Via")]
-        [Range(0, int.MaxValue, ErrorMessage = "must be a valid shipper")]
         public Nullable<int> ShipVia { get; set; }
-
-        [DisplayName("Freight")]
         public Nullable<decimal> Freight { get; set; }
-
-        [DisplayName("Where To")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipName { get; set; }
-
-        [DisplayName("Address")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipAddress { get; set; }
-
-        [DisplayName("City")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipCity { get; set; }
-
-        [DisplayName("Region")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipRegion { get; set; }
-
-        [DisplayName("Postal Code")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipPostalCode { get; set; }
-
-        [DisplayName("Country")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "must be between 2 and 50 characters")]
         public string ShipCountry { get; set; }
-
-        [DisplayName("Customer")]    
+    
         public virtual Customer Customer { get; set; }
-
-        [DisplayName("Employee")]    
         public virtual Employee Employee { get; set; }
-        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Detail> Order_Details { get; set; }
-
-        [DisplayName("Shipper")]
         public virtual Shipper Shipper { get; set; }
     }
 }
