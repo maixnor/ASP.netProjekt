@@ -49,7 +49,7 @@ namespace WebProject.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
                     Session["cid"] = customer.CustomerID;
-                    return RedirectToAction("Index", "DashCustomer");
+                    return RedirectToAction("Index", "DashCustomer", new { customer = customer.CustomerID }); ;
                     //return RedirectToLocal(returnUrl);
                 }
                 else
@@ -65,7 +65,7 @@ namespace WebProject.Controllers
         {
             if (customer == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var orders = db.Orders.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Shipper);
             orders = orders.Where(t => t.CustomerID == customer);
