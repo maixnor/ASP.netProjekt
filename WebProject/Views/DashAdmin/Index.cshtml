@@ -9,38 +9,40 @@
 
 
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Picture)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
+            @Html.ActionLink("Categories", "Index", "Categories")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.ActionLink("Customers", "Index", "Customers")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Picture)
+            @Html.ActionLink("Employees", "Index", "Employees")
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryID })
+            @Html.ActionLink("Orders", "Index", "Orders")
+        </td>
+        <td>
+            @Html.ActionLink("Products", "Index", "Products")
+        </td>
+        <td>
+            @Html.ActionLink("Regions", "Index", "Regions")
+        </td>
+        <td>
+            @Html.ActionLink("Shippers", "Index", "Shippers")
+        </td>
+        <td>
+            @Html.ActionLink("Suppliers", "Index", "Suppliers")
+        </td>
+        <td>
+            @Html.ActionLink("Territories", "Index", "Territories")
+        </td>
+        <td>
+            @Html.ActionLink("About", "About", "Home")
+        </td>
+        <td>
+            @Html.ActionLink("Contact", "Contact", "Home")
         </td>
     </tr>
 }

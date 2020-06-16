@@ -404,10 +404,6 @@
     <Content Include="Views\DashShipper\Login.cshtml" />
     <Content Include="Views\DashSupplier\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\DashAdmin\Create.cshtml" />
-    <Content Include="Views\DashAdmin\Delete.cshtml" />
-    <Content Include="Views\DashAdmin\Details.cshtml" />
-    <Content Include="Views\DashAdmin\Edit.cshtml" />
     <Content Include="Views\DashAdmin\Index.cshtml" />
     <Content Include="Views\DashCustomer\Login.cshtml" />
   </ItemGroup>
