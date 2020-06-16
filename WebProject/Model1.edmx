@@ -6,7 +6,7 @@
     <edmx:StorageModels>
       <Schema Namespace="NorthwindMeiznerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
-warning 6013: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Artikel' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Artikel' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="Artikel">
           <Property Name="ArtikelNr" Type="int" />
           <Property Name="Artikelname" Type="text" />
@@ -53,6 +53,8 @@ warning 6013: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Country" Type="nvarchar" MaxLength="15" />
           <Property Name="Phone" Type="nvarchar" MaxLength="24" />
           <Property Name="Fax" Type="nvarchar" MaxLength="24" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -76,6 +78,8 @@ warning 6013: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Notes" Type="ntext" />
           <Property Name="ReportsTo" Type="int" />
           <Property Name="PhotoPath" Type="nvarchar" MaxLength="255" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="EmployeeTerritories">
           <Key>
@@ -144,6 +148,8 @@ warning 6013: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="ShipperID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CompanyName" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="Phone" Type="nvarchar" MaxLength="24" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Suppliers">
           <Key>
@@ -161,6 +167,8 @@ warning 6013: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Phone" Type="nvarchar" MaxLength="24" />
           <Property Name="Fax" Type="nvarchar" MaxLength="24" />
           <Property Name="HomePage" Type="ntext" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -181,7 +189,7 @@ warning 6013: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="RegionID" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Alphabetical list of products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Alphabetical list of products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Alphabetical list of products">
           <Key>
             <PropertyRef Name="ProductID" />
@@ -202,7 +210,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="CategoryName" Type="nvarchar" MaxLength="15" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Category Sales for 1997' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Category Sales for 1997' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Category Sales for 1997">
           <Key>
             <PropertyRef Name="CategoryName" />
@@ -211,7 +219,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="CategorySales" Type="money" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Current Product List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Current Product List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Current Product List">
           <Key>
             <PropertyRef Name="ProductID" />
@@ -221,7 +229,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="ProductName" Type="nvarchar" MaxLength="40" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Customer and Suppliers by City' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Customer and Suppliers by City' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Customer and Suppliers by City">
           <Key>
             <PropertyRef Name="CompanyName" />
@@ -233,7 +241,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Relationship" Type="varchar" MaxLength="9" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Invoices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Invoices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Invoices">
           <Key>
             <PropertyRef Name="CustomerName" />
@@ -274,7 +282,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Freight" Type="money" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Order Details Extended' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Order Details Extended' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Order Details Extended">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -293,7 +301,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="ExtendedPrice" Type="money" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Order Subtotals' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Order Subtotals' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Order Subtotals">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -302,7 +310,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Subtotal" Type="money" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Orders Qry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Orders Qry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Orders Qry">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -330,7 +338,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Country" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Product Sales for 1997' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Product Sales for 1997' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Product Sales for 1997">
           <Key>
             <PropertyRef Name="CategoryName" />
@@ -341,7 +349,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="ProductSales" Type="money" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Products Above Average Price' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Products Above Average Price' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Products Above Average Price">
           <Key>
             <PropertyRef Name="ProductName" />
@@ -350,7 +358,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="UnitPrice" Type="money" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Products by Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Products by Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Products by Category">
           <Key>
             <PropertyRef Name="CategoryName" />
@@ -364,7 +372,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Discontinued" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Quarterly Orders' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Quarterly Orders' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="Quarterly Orders">
           <Property Name="CustomerID" Type="nchar" MaxLength="5" />
           <Property Name="CompanyName" Type="nvarchar" MaxLength="40" />
@@ -372,7 +380,7 @@ warning 6013: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Country" Type="nvarchar" MaxLength="15" />
         </EntityType>-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Sales by Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Sales by Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Sales by Category">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -385,7 +393,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="ProductSales" Type="money" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Sales Totals by Amount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Sales Totals by Amount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Sales Totals by Amount">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -397,7 +405,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="ShippedDate" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Summary of Sales by Quarter' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Summary of Sales by Quarter' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Summary of Sales by Quarter">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -407,7 +415,7 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Subtotal" Type="money" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJECT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Summary of Sales by Year' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'C:\USERS\BENJAMIN\SOURCE\REPOS\NOTTHERE0815\ASP.NETPROJEKT\WEBPROJECT\APP_DATA\NORTHWINDMEIZNER.MDF.dbo.Summary of Sales by Year' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Summary of Sales by Year">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -889,10 +897,10 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
           <NavigationProperty Name="CustomerDemographics" Relationship="Self.CustomerCustomerDemo" FromRole="Customers" ToRole="CustomerDemographics" />
-          <Property Name="Username" Type="String" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -916,12 +924,12 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ReportsTo" Type="Int32" />
           <Property Name="PhotoPath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employees1" Relationship="Self.FK_Employees_Employees" FromRole="Employees" ToRole="Employees1" />
           <NavigationProperty Name="Employee1" Relationship="Self.FK_Employees_Employees" FromRole="Employees1" ToRole="Employees" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Employees" FromRole="Employees" ToRole="Orders" />
           <NavigationProperty Name="Territories" Relationship="Self.EmployeeTerritories" FromRole="Employees" ToRole="Territories" />
-          <Property Name="Username" Type="String" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Order_Detail">
           <Key>
@@ -992,9 +1000,9 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="ShipperID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CompanyName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Shippers" FromRole="Shippers" ToRole="Orders" />
-          <Property Name="Username" Type="String" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -1012,9 +1020,9 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
           <Property Name="Phone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="HomePage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Suppliers" FromRole="Suppliers" ToRole="Products" />
-          <Property Name="Username" Type="String" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1552,6 +1560,8 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
                 <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1576,6 +1586,8 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="ReportsTo" ColumnName="ReportsTo" />
                 <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1640,6 +1652,8 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
                 <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1658,6 +1672,8 @@ warning 6002: The table/view 'C:\USERS\BENJAMIN.BEN2018\SOURCE\REPOS\ASP.NETPROJ
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="HomePage" ColumnName="HomePage" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
