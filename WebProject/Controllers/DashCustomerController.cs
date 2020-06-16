@@ -17,6 +17,13 @@ namespace WebProject.Controllers
     {
         private Northwind db = new Northwind();
 
+        public ActionResult Logoff()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
         [AllowAnonymous]
         public ActionResult Login()
         {
@@ -33,20 +40,16 @@ namespace WebProject.Controllers
             {
                 using (var db = new Northwind())
                 {
-                    string username = login.UserName;
-                    string password = login.Password;
                     var erg = from t in db.Customers
-                              where t.Username == username && t.Password == password
+                              where t.Username == login.Username && t.Password == login.Password
                               select t;
-                   
                     customer = erg.FirstOrDefault();
-                    
                 }
-                if (login.UserName == login.Password)
+                if (customer != null) // TODO mit der datenbank vergleichen
                 {
-                    FormsAuthentication.SetAuthCookie(login.UserName, login.RememberMe);
+                    FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
                     Session["cid"] = customer.CustomerID;
-                    RedirectToAction("Index", "DashCustomer");
+                    return RedirectToAction("Index", "DashCustomer");
                     //return RedirectToLocal(returnUrl);
                 }
                 else
@@ -56,7 +59,6 @@ namespace WebProject.Controllers
             }
             return View();
         }
-
 
         // GET: DashCustomer
         public ActionResult Index(string customer)
