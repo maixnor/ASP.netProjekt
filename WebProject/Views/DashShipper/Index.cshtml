@@ -96,9 +96,7 @@
             @Html.DisplayFor(modelItem => item.Shipper.CompanyName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
+            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) 
         </td>
     </tr>
 }
