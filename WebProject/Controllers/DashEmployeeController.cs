@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebProject;
+using WebProject.Models;
 
 namespace WebProject.Controllers
 {
@@ -15,19 +17,53 @@ namespace WebProject.Controllers
     {
         private Northwind db = new Northwind();
 
+        public ActionResult Logoff()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
         [AllowAnonymous]
-        public ActionResult Login(string username, string password)
+        public ActionResult Login()
         {
             return View();
         }
 
-        // GET: DashEmployee
-        public ActionResult Index(int? employee)
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginGeneric login, string returnUrl)
         {
-            if (employee == null)
+            Employee employee;
+            if (ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+                using (var db = new Northwind())
+                {
+                    var erg = from t in db.Employees
+                              where t.Username == login.Username && t.Password == login.Password
+                              select t;
+                    employee = erg.FirstOrDefault();
+                }
+                if (employee != null)
+                {
+                    FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
+                    Session["eid"] = employee.EmployeeID;
+                    return RedirectToAction("Index", "DashEmployee", new { });
+                    //return RedirectToLocal(returnUrl);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid username or password");
+                }
             }
+            return View();
+        }
+
+        // GET: DashEmployee
+        public ActionResult Index()
+        {
+            int employee = (int)Session["eid"];
             var orders = db.Orders.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Shipper);
             orders = orders.Where(t => t.EmployeeID == employee);
             return View(orders.ToList());

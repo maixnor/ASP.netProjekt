@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebProject;
+using WebProject.Models;
 
 namespace WebProject.Controllers
 {
@@ -15,19 +17,53 @@ namespace WebProject.Controllers
     {
         private Northwind db = new Northwind();
 
+        public ActionResult Logoff()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
         [AllowAnonymous]
-        public ActionResult Login(string username, string password)
+        public ActionResult Login()
         {
             return View();
         }
 
-        // GET: DashShipper
-        public ActionResult Index(int? shipper)
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginGeneric login, string returnUrl)
         {
-            if (shipper == null)
+            Shipper shipper;
+            if (ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+                using (var db = new Northwind())
+                {
+                    var erg = from t in db.Shippers
+                              where t.Username == login.Username && t.Password == login.Password
+                              select t;
+                    shipper = erg.FirstOrDefault();
+                }
+                if (shipper != null)
+                {
+                    FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
+                    Session["shid"] = shipper.ShipperID;
+                    return RedirectToAction("Index", "DashShipper", new { });
+                    //return RedirectToLocal(returnUrl);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid username or password");
+                }
             }
+            return View();
+        }
+
+        // GET: DashShipper
+        public ActionResult Index()
+        {
+            int shipper = (int)Session["shid"];
             var orders = db.Orders.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Shipper);
             orders = orders.Where(t => t.ShipVia == shipper);
             return View(orders.ToList());

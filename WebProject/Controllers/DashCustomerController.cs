@@ -45,7 +45,7 @@ namespace WebProject.Controllers
                               select t;
                     customer = erg.FirstOrDefault();
                 }
-                if (customer != null) // TODO mit der datenbank vergleichen
+                if (customer != null)
                 {
                     FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
                     Session["cid"] = customer.CustomerID;
