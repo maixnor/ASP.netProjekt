@@ -49,7 +49,7 @@ namespace WebProject.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
                     Session["cid"] = customer.CustomerID;
-                    return RedirectToAction("Index", "DashCustomer", new { customer = customer.CustomerID }); ;
+                    return RedirectToAction("Index", "DashCustomer", new { });
                     //return RedirectToLocal(returnUrl);
                 }
                 else
@@ -61,12 +61,9 @@ namespace WebProject.Controllers
         }
 
         // GET: DashCustomer
-        public ActionResult Index(string customer)
+        public ActionResult Index()
         {
-            if (customer == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            string customer = (string)Session["cid"];
             var orders = db.Orders.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Shipper);
             orders = orders.Where(t => t.CustomerID == customer);
             return View(orders.ToList());
