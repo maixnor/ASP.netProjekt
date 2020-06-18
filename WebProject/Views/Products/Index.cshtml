@@ -3,6 +3,11 @@
 @{
     ViewBag.Title = "Products - Index";
     if (Session["a"] != null) { Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+    else if (Session["cid"] != null) { Layout = "~/Views/Shared/_LayoutCustomer.cshtml"; }
+    else if (Session["suid"] != null) { Layout = "~/Views/Shared/_LayoutSupplier.cshtml"; }
+    else if (Session["shid"] != null) { Layout = "~/Views/Shared/_LayoutShipper.cshtml"; }
+    else if (Session["eid"] != null) { Layout = "~/Views/Shared/_LayoutEmployee.cshtml"; }
+    else { Layout = "~/Views/Shared/_Layout.cshtml"; }
 }
 
 <h2>@ViewBag.Title</h2>
@@ -44,54 +49,54 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ProductName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.QuantityPerUnit)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.UnitPrice)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.UnitsInStock)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.UnitsOnOrder)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ReorderLevel)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Discontinued)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Category.CategoryName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
-    </td>
-    @{
-        if (Session["a"] != null)
-        {
+        <tr>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })|
-                @Html.ActionLink("Order Details", "Index", "OrderDetail", new { product = item.ProductID }, null)
+                @Html.DisplayFor(modelItem => item.ProductName)
             </td>
-        }
-        else
-        {
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
-                @Html.ActionLink("Order Details", "Index", "OrderDetail", new { product = item.ProductID }, null)
+                @Html.DisplayFor(modelItem => item.QuantityPerUnit)
             </td>
-        }
-    }
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsOnOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReorderLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discontinued)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
+            </td>
+            @{
+                if (Session["a"] != null)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })|
+                        @Html.ActionLink("Order Details", "Index", "OrderDetail", new { product = item.ProductID }, null)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
+                        @Html.ActionLink("Order Details", "Index", "OrderDetail", new { product = item.ProductID }, null)
+                    </td>
+                }
+            }
 
-</tr>
+        </tr>
     }
 
 </table>

@@ -28,24 +28,24 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.TerritoryDescription)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Region.RegionDescription)
-    </td>
-    @{
-        if (Session["a"] != null)
-        {
+        <tr>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TerritoryID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.TerritoryID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.TerritoryID })
+                @Html.DisplayFor(modelItem => item.TerritoryDescription)
             </td>
-        }
-    }
-</tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region.RegionDescription)
+            </td>
+            @{
+                if (Session["a"] != null)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.TerritoryID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.TerritoryID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.TerritoryID })
+                    </td>
+                }
+            }
+        </tr>
     }
 
 </table>
