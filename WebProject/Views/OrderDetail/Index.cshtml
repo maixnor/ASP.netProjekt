@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Order Detail - Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+        if (Session["a"] != null) { Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
 }
 
 <h2>@ViewBag.Title</h2>
@@ -32,22 +32,25 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Order.CustomerID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.ProductName)
-            </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.UnitPrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Discount)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Order.CustomerID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Product.ProductName)
+    </td>
+    @{
+        if (Session["a"] != null)
+        {
             <td>
                 @Html.ActionLink("Edit", "Edit", new { product = item.ProductID, order = item.OrderID }) |
                 @Html.ActionLink("Details", "Details", new { product = item.ProductID, order = item.OrderID }) |
@@ -55,7 +58,19 @@
                 @Html.ActionLink("Product", "Index", "Products", new { product = item.ProductID }, null) |
                 @Html.ActionLink("Order", "Index", "Orders", new { order = item.OrderID }, null)
             </td>
-        </tr>
+
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Details", "Details", new { product = item.ProductID, order = item.OrderID }) |
+                @Html.ActionLink("Product", "Index", "Products", new { product = item.ProductID }, null) |
+                @Html.ActionLink("Order", "Index", "Orders", new { order = item.OrderID }, null)
+            </td>
+        }
+    }
+
+    </tr>
     }
 
 </table>

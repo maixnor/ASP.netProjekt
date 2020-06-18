@@ -2,7 +2,12 @@
 
 @{
     ViewBag.Title = "Territories - Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["a"] != null) { Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+    else if (Session["cid"] != null) { Layout = "~/Views/Shared/_LayoutCustomer.cshtml"; }
+    else if (Session["suid"] != null) { Layout = "~/Views/Shared/_LayoutSupplier.cshtml"; }
+    else if (Session["shid"] != null) { Layout = "~/Views/Shared/_LayoutShipper.cshtml"; }
+    else if (Session["eid"] != null) { Layout = "~/Views/Shared/_LayoutEmployee.cshtml"; }
+    else { Layout = "~/Views/Shared/_Layout.cshtml"; }
 }
 
 <h2>@ViewBag.Title</h2>
@@ -23,19 +28,24 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TerritoryDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Region.RegionDescription)
-            </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TerritoryDescription)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Region.RegionDescription)
+    </td>
+    @{
+        if (Session["a"] != null)
+        {
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.TerritoryID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.TerritoryID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.TerritoryID })
             </td>
-        </tr>
+        }
+    }
+</tr>
     }
 
 </table>

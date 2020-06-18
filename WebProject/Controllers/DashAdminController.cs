@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebProject;
+using WebProject.Models;
 
 namespace WebProject.Controllers
 {
@@ -14,9 +16,18 @@ namespace WebProject.Controllers
     {
         private Northwind db = new Northwind();
 
+        public ActionResult Logoff()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
         // GET: DashAdmin
         public ActionResult Index()
         {
+            FormsAuthentication.SetAuthCookie("admin", false);
+            Session["a"] = true;
             return View(db.Categories.ToList());
         }
 

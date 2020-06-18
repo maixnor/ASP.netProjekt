@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Shippers - Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+        if (Session["a"] != null) { Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
 }
 
 <h2>@ViewBag.Title</h2>
@@ -23,20 +23,32 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompanyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CompanyName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone)
+    </td>
+    @{
+        if (Session["a"] != null)
+        {
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ShipperID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ShipperID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ShipperID }) |
                 @Html.ActionLink("Orders", "Index", "Orders", new { shipper = item.ShipperID }, null)
             </td>
-        </tr>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ShipperID }) |
+                @Html.ActionLink("Orders", "Index", "Orders", new { shipper = item.ShipperID }, null)
+            </td>
+        }
+    }
+</tr>
     }
 
 </table>

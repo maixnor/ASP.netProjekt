@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Regions - Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+        if (Session["a"] != null) { Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
 }
 
 <h2>@ViewBag.Title</h2>
@@ -20,17 +20,29 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegionDescription)
-            </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.RegionDescription)
+    </td>
+    @{
+        if (Session["a"] != null)
+        {
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.RegionID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.RegionID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.RegionID }) |
                 @Html.ActionLink("Territories", "Index", "Territories", new { region = item.RegionID }, null)
             </td>
-        </tr>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.RegionID }) |
+                @Html.ActionLink("Territories", "Index", "Territories", new { region = item.RegionID }, null)
+            </td>
+        }
+    }
+</tr>
     }
 
 </table>

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Suppliers - Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+        if (Session["a"] != null) { Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
 }
 
 <h2>@ViewBag.Title</h2>
@@ -50,47 +50,59 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompanyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Region)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostalCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fax)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HomePage)
-            </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CompanyName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ContactName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ContactTitle)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.City)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Region)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PostalCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Country)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fax)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HomePage)
+    </td>
+    @{
+        if (Session["a"] != null)
+        {
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.SupplierID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.SupplierID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.SupplierID }) |
                 @Html.ActionLink("Products", "Index", "Products", new { supplier = item.SupplierID }, null)
             </td>
-        </tr>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.SupplierID }) |
+                @Html.ActionLink("Products", "Index", "Products", new { supplier = item.SupplierID }, null)
+            </td>
+        }
+    }
+</tr>
     }
 
 </table>

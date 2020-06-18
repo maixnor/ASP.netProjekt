@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Orders - Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+        if (Session["a"] != null) { Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
 }
 
 <h2>@ViewBag.Title</h2>

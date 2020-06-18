@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Orders - Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+        if (Session["a"] != null) { Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
 }
 
 <h2>@ViewBag.Title</h2>
@@ -56,53 +56,63 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequiredDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShippedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Freight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShipName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShipAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShipCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShipRegion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShipPostalCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShipCountry)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.CompanyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Shipper.CompanyName)
-            </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RequiredDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShippedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Freight)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShipName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShipAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShipCity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShipRegion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShipPostalCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ShipCountry)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Customer.CompanyName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Employee.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Shipper.CompanyName)
+    </td>
+    @{
+        if (Session["a"] != null)
+        {
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.OrderID }) |
                 @Html.ActionLink("Order Details", "Index", "OrderDetail", new { order = item.OrderID }, null)
             </td>
-        </tr>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
+                @Html.ActionLink("Order Details", "Index", "OrderDetail", new { order = item.OrderID }, null)
+            </td>
+        }
     }
-
+    </tr>
 </table>

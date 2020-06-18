@@ -2,7 +2,8 @@
 
 @{
     ViewBag.Title = "Categories - Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["a"] != null) { Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+    else {     if (Session["a"] != null) { Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; } }
 }
 
 <h2>@ViewBag.Title</h2>
@@ -42,19 +43,31 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            @* TODO add picture*@
+             @*TODO add picture*@
             @*<td>
-                    <img alt="picture" src="~/Images/@item.Picture.ToString().Substring(10)"/>
+                  add picture       
                 </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Count)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CategoryID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID }) |
-                @Html.ActionLink("Products", "Index", "Products", new { category = item.CategoryID }, null)
-            </td>
+            @{ 
+                if (Session["a"] != null)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CategoryID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID }) |
+                        @Html.ActionLink("Products", "Index", "Products", new { category = item.CategoryID }, null)
+                    </td>
+
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Products", "Index", "Products", new { category = item.CategoryID }, null)
+                    </td>
+                }
+            }
         </tr>
     }
 

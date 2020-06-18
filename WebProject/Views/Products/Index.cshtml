@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Products - Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["a"] != null) { Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
 }
 
 <h2>@ViewBag.Title</h2>
@@ -44,41 +44,54 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuantityPerUnit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitsInStock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitsOnOrder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReorderLevel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discontinued)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
-            </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.QuantityPerUnit)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UnitPrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UnitsInStock)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UnitsOnOrder)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ReorderLevel)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Discontinued)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
+    </td>
+    @{
+        if (Session["a"] != null)
+        {
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })|
                 @Html.ActionLink("Order Details", "Index", "OrderDetail", new { product = item.ProductID }, null)
             </td>
-        </tr>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
+                @Html.ActionLink("Order Details", "Index", "OrderDetail", new { product = item.ProductID }, null)
+            </td>
+        }
+    }
+
+</tr>
     }
 
 </table>
