@@ -90,6 +90,7 @@
                 @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID }) |
+                @Html.ActionLink("Log in as", "AsCustomer", "DashAdmin", new { id = item.CustomerID }, null)
             </td>
         }
     }

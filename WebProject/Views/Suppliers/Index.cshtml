@@ -92,12 +92,14 @@
     @{
         if (Session["a"] != null)
         {
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.SupplierID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.SupplierID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.SupplierID }) |
-                @Html.ActionLink("Products", "Index", "Products", new { supplier = item.SupplierID }, null)
-            </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.SupplierID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.SupplierID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.SupplierID }) |
+            @Html.ActionLink("Products", "Index", "Products", new { supplier = item.SupplierID }, null) |
+            @Html.ActionLink("Log in as", "AsSupplier", "DashAdmin", new { id = item.SupplierID }, null)
+
+        </td>
         }
         else
         {
