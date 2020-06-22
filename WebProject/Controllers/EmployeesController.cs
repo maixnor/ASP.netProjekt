@@ -18,6 +18,7 @@ namespace WebProject.Controllers
         // GET: Employees
         public ActionResult Index(int? employee)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             var employees = db.Employees.Include(e => e.Employee1);
             if (employee != null)
                 employees = employees.Where(t => t.EmployeeID == employee);
@@ -27,6 +28,7 @@ namespace WebProject.Controllers
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -42,6 +44,7 @@ namespace WebProject.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             ViewBag.ReportsTo = new SelectList(db.Employees, "EmployeeID", "LastName");
             return View();
         }
@@ -53,6 +56,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "EmployeeID,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,City,Region,PostalCode,Country,HomePhone,Extension,Photo,Notes,ReportsTo,PhotoPath")] Employee employee)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Employees.Add(employee);
@@ -67,6 +71,7 @@ namespace WebProject.Controllers
         // GET: Employees/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -87,6 +92,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EmployeeID,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,City,Region,PostalCode,Country,HomePhone,Extension,Photo,Notes,ReportsTo,PhotoPath")] Employee employee)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Entry(employee).State = EntityState.Modified;
@@ -100,6 +106,7 @@ namespace WebProject.Controllers
         // GET: Employees/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -117,6 +124,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             Employee employee = db.Employees.Find(id);
             db.Employees.Remove(employee);
             db.SaveChanges();

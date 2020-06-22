@@ -24,6 +24,7 @@ namespace WebProject.Controllers
         // GET: Regions/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +40,7 @@ namespace WebProject.Controllers
         // GET: Regions/Create
         public ActionResult Create()
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             return View();
         }
 
@@ -49,6 +51,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "RegionID,RegionDescription")] Region region)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Regions.Add(region);
@@ -62,6 +65,7 @@ namespace WebProject.Controllers
         // GET: Regions/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -81,6 +85,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "RegionID,RegionDescription")] Region region)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Entry(region).State = EntityState.Modified;
@@ -93,6 +98,7 @@ namespace WebProject.Controllers
         // GET: Regions/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -110,6 +116,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             Region region = db.Regions.Find(id);
             db.Regions.Remove(region);
             db.SaveChanges();

@@ -22,11 +22,8 @@ namespace WebProject.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            // TODO
-            //foreach (var item in db.Categories)
-            //{
-            //    stringToImage(item.Picture).Save("Images/" + item.Picture.ToString().Substring(10), ImageFormat.Png);
-            //}
+            // TODO pictures
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             return View(db.Categories.ToList());
         }
 
@@ -42,6 +39,7 @@ namespace WebProject.Controllers
         // GET: Categories/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

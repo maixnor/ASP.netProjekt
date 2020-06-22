@@ -18,12 +18,14 @@ namespace WebProject.Controllers
         // GET: Suppliers
         public ActionResult Index()
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             return View(db.Suppliers.ToList());
         }
 
         // GET: Suppliers/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +41,7 @@ namespace WebProject.Controllers
         // GET: Suppliers/Create
         public ActionResult Create()
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             return View();
         }
 
@@ -49,6 +52,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SupplierID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax,HomePage")] Supplier supplier)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Suppliers.Add(supplier);
@@ -62,6 +66,7 @@ namespace WebProject.Controllers
         // GET: Suppliers/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -81,6 +86,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "SupplierID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax,HomePage")] Supplier supplier)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Entry(supplier).State = EntityState.Modified;
@@ -93,6 +99,7 @@ namespace WebProject.Controllers
         // GET: Suppliers/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -110,6 +117,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             Supplier supplier = db.Suppliers.Find(id);
             db.Suppliers.Remove(supplier);
             db.SaveChanges();
