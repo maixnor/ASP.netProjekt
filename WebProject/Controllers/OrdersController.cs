@@ -42,7 +42,7 @@ namespace WebProject.Controllers
         }
 
         // GET: Orders/Create
-        public ActionResult Create()
+        public ActionResult Create(string product)
         {
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName");
             ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "LastName");

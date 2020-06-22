@@ -17,6 +17,15 @@ namespace WebProject.Controllers
     {
         private Northwind db = new Northwind();
 
+        public ActionResult OrderProduct(int? product)
+        {
+            Order order = new Order();
+            order.CustomerID = (string)Session["cid"];
+            db.Orders.Add(order);
+            db.SaveChanges();
+            return View();
+        }
+
         public ActionResult Logoff()
         {
             FormsAuthentication.SignOut();

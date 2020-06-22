@@ -87,11 +87,17 @@
                         @Html.ActionLink("Order Details", "Index", "OrderDetail", new { product = item.ProductID }, null)
                     </td>
                 }
+                else if (Session["cid"] != null)
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
+                        @Html.ActionLink("Order this", "Create", "Orders", new { product = item.ProductID }, null)
+                    </td>
+                }
                 else
                 {
                     <td>
                         @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
-                        @Html.ActionLink("Order Details", "Index", "OrderDetail", new { product = item.ProductID }, null)
                     </td>
                 }
             }
