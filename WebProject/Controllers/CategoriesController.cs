@@ -57,6 +57,7 @@ namespace WebProject.Controllers
         // GET: Categories/Create
         public ActionResult Create()
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized); 
             return View();
         }
 
@@ -67,6 +68,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CategoryID,CategoryName,Description,Picture")] Category category)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Categories.Add(category);
@@ -80,6 +82,7 @@ namespace WebProject.Controllers
         // GET: Categories/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -99,6 +102,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CategoryID,CategoryName,Description,Picture")] Category category)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Entry(category).State = EntityState.Modified;
@@ -111,6 +115,7 @@ namespace WebProject.Controllers
         // GET: Categories/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -128,6 +133,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             Category category = db.Categories.Find(id);
             db.Categories.Remove(category);
             db.SaveChanges();
