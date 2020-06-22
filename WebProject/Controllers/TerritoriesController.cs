@@ -18,7 +18,7 @@ namespace WebProject.Controllers
         // GET: Territories
         public ActionResult Index(int? region)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["suid"] == null && Session["shid"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             var territories = db.Territories.Include(t => t.Region);
             if (region != null)
                 territories = territories.Where(t => t.RegionID == region);
@@ -28,7 +28,7 @@ namespace WebProject.Controllers
         // GET: Territories/Details/5
         public ActionResult Details(string id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["suid"] == null && Session["shid"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -44,7 +44,7 @@ namespace WebProject.Controllers
         // GET: Territories/Create
         public ActionResult Create()
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["suid"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             ViewBag.RegionID = new SelectList(db.Regions, "RegionID", "RegionDescription");
             return View();
         }
@@ -56,7 +56,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TerritoryID,TerritoryDescription,RegionID")] Territory territory)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["suid"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Territories.Add(territory);
@@ -71,7 +71,7 @@ namespace WebProject.Controllers
         // GET: Territories/Edit/5
         public ActionResult Edit(string id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -92,7 +92,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "TerritoryID,TerritoryDescription,RegionID")] Territory territory)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Entry(territory).State = EntityState.Modified;
@@ -106,7 +106,7 @@ namespace WebProject.Controllers
         // GET: Territories/Delete/5
         public ActionResult Delete(string id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -124,7 +124,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             Territory territory = db.Territories.Find(id);
             db.Territories.Remove(territory);
             db.SaveChanges();

@@ -54,7 +54,7 @@
         @Html.DisplayFor(modelItem => item.Product.ProductName)
     </td>
     @{
-        if (Session["a"] != null)
+        if (Session["a"] != null || Session["eid"] != null)
         {
             <td>
                 @Html.ActionLink("Edit", "Edit", new { product = item.ProductID, order = item.OrderID }) |

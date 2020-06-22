@@ -18,14 +18,14 @@ namespace WebProject.Controllers
         // GET: Shippers
         public ActionResult Index()
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null && Session["shid"] == null && Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             return View(db.Shippers.ToList());
         }
 
         // GET: Shippers/Details/5
         public ActionResult Details(int? id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null && Session["shid"] == null && Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -41,7 +41,7 @@ namespace WebProject.Controllers
         // GET: Shippers/Create
         public ActionResult Create()
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             return View();
         }
 
@@ -52,7 +52,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ShipperID,CompanyName,Phone")] Shipper shipper)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Shippers.Add(shipper);
@@ -66,7 +66,7 @@ namespace WebProject.Controllers
         // GET: Shippers/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && (int)Session["shid"] == id && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -86,7 +86,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ShipperID,CompanyName,Phone")] Shipper shipper)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && (int)Session["shid"] == shipper.ShipperID && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Entry(shipper).State = EntityState.Modified;
@@ -99,7 +99,7 @@ namespace WebProject.Controllers
         // GET: Shippers/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && (int)Session["shid"] == id && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -117,7 +117,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && (int)Session["shid"] == id && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             Shipper shipper = db.Shippers.Find(id);
             db.Shippers.Remove(shipper);
             db.SaveChanges();

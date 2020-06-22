@@ -19,10 +19,15 @@ namespace WebProject.Controllers
 
         public ActionResult OrderProduct(int? product)
         {
-            Order order = new Order();
+            if (Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            Order_Detail detail = new Order_Detail();
+            detail.Product = db.Products.Find(product);
+            // todo tilli
+            Order order = db.Orders.Add(new Order());
             order.CustomerID = (string)Session["cid"];
             db.Orders.Add(order);
             db.SaveChanges();
+            // todo
             return View();
         }
 

@@ -18,7 +18,6 @@ namespace WebProject.Controllers
         // GET: Orders
         public ActionResult Index(int? shipper, int? order)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             var orders = db.Orders.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Shipper);
             if (shipper != null)
                 orders = orders.Where(t => t.Shipper.ShipperID == shipper);
@@ -30,7 +29,6 @@ namespace WebProject.Controllers
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -46,7 +44,7 @@ namespace WebProject.Controllers
         // GET: Orders/Create
         public ActionResult Create(string product)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName");
             ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "LastName");
             ViewBag.ShipVia = new SelectList(db.Shippers, "ShipperID", "CompanyName");
@@ -60,7 +58,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "OrderID,CustomerID,EmployeeID,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry")] Order order)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Orders.Add(order);
@@ -77,7 +75,7 @@ namespace WebProject.Controllers
         // GET: Orders/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -100,7 +98,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OrderID,CustomerID,EmployeeID,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry")] Order order)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Entry(order).State = EntityState.Modified;
@@ -116,7 +114,7 @@ namespace WebProject.Controllers
         // GET: Orders/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -134,7 +132,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             Order order = db.Orders.Find(id);
             db.Orders.Remove(order);
             db.SaveChanges();

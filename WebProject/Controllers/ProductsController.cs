@@ -18,7 +18,6 @@ namespace WebProject.Controllers
         // GET: Products
         public ActionResult Index(int? category, int? supplier, int? product)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             var products = db.Products.Include(p => p.Category).Include(p => p.Supplier);
             if (category != null)
                 products = products.Where(t => t.CategoryID == category);
@@ -32,7 +31,6 @@ namespace WebProject.Controllers
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -48,7 +46,7 @@ namespace WebProject.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["suid"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
             ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "CompanyName");
             return View();
@@ -61,7 +59,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductID,ProductName,SupplierID,CategoryID,QuantityPerUnit,UnitPrice,UnitsInStock,UnitsOnOrder,ReorderLevel,Discontinued")] Product product)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["suid"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
@@ -77,7 +75,7 @@ namespace WebProject.Controllers
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["suid"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -99,7 +97,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProductID,ProductName,SupplierID,CategoryID,QuantityPerUnit,UnitPrice,UnitsInStock,UnitsOnOrder,ReorderLevel,Discontinued")] Product product)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["suid"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;
@@ -114,7 +112,7 @@ namespace WebProject.Controllers
         // GET: Products/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["suid"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -132,7 +130,7 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (Session["a"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["a"] == null && Session["suid"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             Product product = db.Products.Find(id);
             db.Products.Remove(product);
             db.SaveChanges();
