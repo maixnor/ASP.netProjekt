@@ -16,7 +16,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Northwind", "Index", "DashCustomer", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(new Northwind().Customers.Find(Session["cid"]).ContactName.ToString(), "Index", "DashCustomer", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

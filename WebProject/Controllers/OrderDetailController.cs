@@ -79,7 +79,7 @@ namespace WebProject.Controllers
             }
             if (Session["cid"] != null)
             {
-                if (db.Orders.Find(order).CustomerID == (string)Session["cid"]) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+                if (db.Orders.Find(order).CustomerID != (string)Session["cid"]) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             }
             else
             {
@@ -102,7 +102,14 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "OrderID,ProductID,UnitPrice,Quantity,Discount")] Order_Detail order_Detail)
         {
-            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["cid"] != null)
+            {
+                if (db.Orders.Find(order_Detail.OrderID).CustomerID != (string)Session["cid"]) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            }
+            else
+            {
+                if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(order_Detail).State = EntityState.Modified;
@@ -117,7 +124,18 @@ namespace WebProject.Controllers
         // GET: OrderDetail/Delete/5
         public ActionResult Delete(int? order, int? product)
         {
-            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (product == null || order == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (Session["cid"] != null)
+            {
+                if (db.Orders.Find(order).CustomerID != (string)Session["cid"]) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            }
+            else
+            {
+                if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            }
             if (product == null || order == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -135,7 +153,14 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int? order, int? product)
         {
-            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["cid"] != null)
+            {
+                if (db.Orders.Find(order).CustomerID != (string)Session["cid"]) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            }
+            else
+            {
+                if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            }
             Order_Detail order_Detail = db.Order_Details.Find(order, product);
             db.Order_Details.Remove(order_Detail);
             db.SaveChanges();

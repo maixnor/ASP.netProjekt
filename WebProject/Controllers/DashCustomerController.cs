@@ -23,6 +23,7 @@ namespace WebProject.Controllers
             if (Session["orderid"] == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var order = db.Orders.Find(Session["orderid"]);
             order.Status = 1;
+            Session["orderid"] = null; // closes cart and opens a new one when needed again
             return RedirectToAction("Index");
         }
 
@@ -42,13 +43,10 @@ namespace WebProject.Controllers
         {
             if (Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             Order order = null;
+            // get new order if there is no available
             if (Session["orderid"] == null)
             {
-                // get new order if there is no available
-                order = new Order();
-                order.Status = -1;
-                order.CustomerID = (string)Session["cid"];
-                db.Orders.Add(order);
+                db.Orders.Add(new Order { Status = -1, CustomerID = (string)Session["cid"] });
                 db.SaveChanges();
                 string customerid = (string)Session["cid"];
                 order = db.Orders.Where(t => t.CustomerID == customerid && t.Status == -1).FirstOrDefault();
@@ -78,6 +76,12 @@ namespace WebProject.Controllers
 
         public ActionResult Logoff()
         {
+            // delete orders with status -1 of the correspondin user
+            if (Session["cid"] != null)
+            {
+                string id = (string)Session["cid"];
+                db.Orders.Where(t => t.Status == -1 && t.CustomerID == id).ForEachAsync(t => db.Orders.Remove(t));
+            }
             FormsAuthentication.SignOut();
             Session.Clear();
             return RedirectToAction("Index", "Home");
@@ -108,6 +112,8 @@ namespace WebProject.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
                     Session["cid"] = customer.CustomerID;
+                    // delete orders with status -1 of the correspondin user
+                    db.Orders.Where(t => t.Status == -1 && t.CustomerID == customer.CustomerID).ForEachAsync(t => db.Orders.Remove(t));
                     return RedirectToAction("Index", "DashCustomer", new { });
                     //return RedirectToLocal(returnUrl);
                 }

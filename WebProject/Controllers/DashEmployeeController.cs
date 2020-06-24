@@ -65,7 +65,7 @@ namespace WebProject.Controllers
         {
             int employee = (int)Session["eid"];
             var orders = db.Orders.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Shipper);
-            orders = orders.Where(t => t.EmployeeID == employee);
+            orders = orders.Where(t => t.EmployeeID == employee && t.Status == 1);
             return View(orders.ToList());
         }
 
