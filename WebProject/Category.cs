@@ -10,7 +10,6 @@
 namespace WebProject
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
     
     public partial class Category
@@ -25,10 +24,7 @@ namespace WebProject
         public string CategoryName { get; set; }
         public string Description { get; set; }
         public byte[] Picture { get; set; }
-        public int Count { get { return (from t in Products
-                                         where t.CategoryID == CategoryID 
-                                         select t).Count(); } }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
     }

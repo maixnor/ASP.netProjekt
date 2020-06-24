@@ -34,6 +34,7 @@ namespace WebProject
         public string ShipRegion { get; set; }
         public string ShipPostalCode { get; set; }
         public string ShipCountry { get; set; }
+        public Nullable<int> Status { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
