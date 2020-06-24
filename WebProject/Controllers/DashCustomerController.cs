@@ -80,13 +80,12 @@ namespace WebProject.Controllers
         public ActionResult Logoff()
         {
             // delete all orders with the status 0 from the corresponding user
-            if (Session["orderid"] != null && Session["cid"] != null)
+            if (Session["cid"] != null)
             {
-                int id = (int)Session["orderid"];
                 string customer = (string)Session["cid"];
-                foreach (var item in db.Orders.Where(t => t.Status == 0 && t.CustomerID == customer))
+                foreach (var item in db.Orders.Where(t => t.Status == 0 && t.CustomerID == customer).ToList())
                 {
-                    DeletEntry(db.Orders.Find(id), db.Order_Details.Where(t => t.OrderID == id));
+                    DeletEntry(item.OrderID);
                 }
             }
             FormsAuthentication.SignOut();
@@ -120,7 +119,13 @@ namespace WebProject.Controllers
                     FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
                     Session["cid"] = customer.CustomerID;
                     // delete orders with status -1 or 0 of the correspondin user
-                    db.Orders.Where(t => t.Status == 0 && t.CustomerID == customer.CustomerID).ForEachAsync(t => db.Entry(t).State = EntityState.Deleted);
+                    if (Session["cid"] != null)
+                    {
+                        foreach (var item in db.Orders.Where(t => t.Status == 0 && t.CustomerID == customer.CustomerID).ToList())
+                        {
+                            DeletEntry(item.OrderID);
+                        }
+                    }
                     db.SaveChanges();
                     return RedirectToAction("Index", "DashCustomer", new { });
                     //return RedirectToLocal(returnUrl);
@@ -245,18 +250,18 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DeletEntry(db.Orders.Find(id), db.Order_Details.Where(t => t.OrderID == id));
+            DeletEntry(id);
             return RedirectToAction("Index");
         }
 
-        private void DeletEntry(Order order, IQueryable<Order_Detail> details)
+        private void DeletEntry(int orderid)
         {
-            foreach (var item in details)
+            foreach (var item in db.Order_Details.Where(t => t.OrderID == orderid).ToList())
             {
                 db.Order_Details.Remove(item);
             }
             db.SaveChanges();
-            db.Orders.Remove(order);
+            db.Orders.Remove(db.Orders.Find(orderid));
             db.SaveChanges();
         }
 
