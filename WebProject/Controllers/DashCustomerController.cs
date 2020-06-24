@@ -23,6 +23,7 @@ namespace WebProject.Controllers
             if (Session["orderid"] == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var order = db.Orders.Find(Session["orderid"]);
             order.Status = 1;
+            db.SaveChanges();
             Session["orderid"] = null; // closes cart and opens a new one when needed again
             return RedirectToAction("Index");
         }
@@ -76,11 +77,15 @@ namespace WebProject.Controllers
 
         public ActionResult Logoff()
         {
-            // delete orders with status -1 of the correspondin user
-            if (Session["cid"] != null)
+            // delete all orders with the status 0 from the corresponding user
+            if (Session["orderid"] != null && Session["cid"] != null)
             {
-                string id = (string)Session["cid"];
-                db.Orders.Where(t => t.Status == -1 && t.CustomerID == id).ForEachAsync(t => db.Orders.Remove(t));
+                int id = (int)Session["orderid"];
+                string customer = (string)Session["cid"];
+                foreach (var item in db.Orders.Where(t => t.Status == 0 && t.CustomerID == customer))
+                {
+                    DeletEntry(db.Orders.Find(id), db.Order_Details.Where(t => t.OrderID == id));
+                }
             }
             FormsAuthentication.SignOut();
             Session.Clear();
@@ -112,8 +117,9 @@ namespace WebProject.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
                     Session["cid"] = customer.CustomerID;
-                    // delete orders with status -1 of the correspondin user
-                    db.Orders.Where(t => t.Status == -1 && t.CustomerID == customer.CustomerID).ForEachAsync(t => db.Orders.Remove(t));
+                    // delete orders with status -1 or 0 of the correspondin user
+                    db.Orders.Where(t => t.Status == 0 && t.CustomerID == customer.CustomerID).ForEachAsync(t => db.Entry(t).State = EntityState.Deleted);
+                    db.SaveChanges();
                     return RedirectToAction("Index", "DashCustomer", new { });
                     //return RedirectToLocal(returnUrl);
                 }
@@ -237,10 +243,19 @@ namespace WebProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Order order = db.Orders.Find(id);
+            DeletEntry(db.Orders.Find(id), db.Order_Details.Where(t => t.OrderID == id));
+            return RedirectToAction("Index");
+        }
+
+        private void DeletEntry(Order order, IQueryable<Order_Detail> details)
+        {
+            foreach (var item in details)
+            {
+                db.Order_Details.Remove(item);
+            }
+            db.SaveChanges();
             db.Orders.Remove(order);
             db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
