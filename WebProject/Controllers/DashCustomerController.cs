@@ -17,6 +17,15 @@ namespace WebProject.Controllers
     {
         private Northwind db = new Northwind();
 
+        public ActionResult Checkout()
+        {
+            if (Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["orderid"] == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var order = db.Orders.Find(Session["orderid"]);
+            order.Status = 1;
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Cart()
         {
             if (Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
@@ -41,11 +50,11 @@ namespace WebProject.Controllers
                 order.CustomerID = (string)Session["cid"];
                 db.Orders.Add(order);
                 db.SaveChanges();
+                string customerid = (string)Session["cid"];
+                order = db.Orders.Where(t => t.CustomerID == customerid && t.Status == -1).FirstOrDefault();
+                order.Status = 0;
+                Session["orderid"] = order.OrderID;
             }
-            string customerid = (string)Session["cid"];
-            order = db.Orders.Where(t => t.CustomerID == customerid && t.Status == -1).FirstOrDefault();
-            order.Status = 0;
-            Session["orderid"] = order.OrderID;
             var prod = db.Products.Find(product);
             Session["pid"] = prod.ProductID;
             ViewBag.Product = prod.ProductName;
@@ -59,7 +68,7 @@ namespace WebProject.Controllers
         public ActionResult OrderProduct([Bind(Include = "OrderID,ProductID,Quantity")]Order_Detail detail)
         {
             if (Session["orderid"] == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            if (Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized); 
+            if (Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             detail.OrderID = (int)Session["orderid"];
             detail.ProductID = (int)Session["pid"];
             db.Order_Details.Add(detail);

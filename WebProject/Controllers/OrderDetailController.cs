@@ -73,10 +73,17 @@ namespace WebProject.Controllers
         // GET: OrderDetail/Edit/5
         public ActionResult Edit(int? order, int? product)
         {
-            if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             if (product == null || order == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (Session["cid"] != null)
+            {
+                if (db.Orders.Find(order).CustomerID == (string)Session["cid"]) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            }
+            else
+            {
+                if (Session["a"] == null && Session["eid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             }
             Order_Detail order_Detail = db.Order_Details.Find(order, product);
             if (order_Detail == null)

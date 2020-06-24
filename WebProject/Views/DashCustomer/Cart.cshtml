@@ -7,6 +7,9 @@
 
 <h2>Cart</h2>
 
+<p>
+    @Html.ActionLink("Checkout", "Checkout", "DashCustomer", new { }, null)
+</p>
 <table class="table">
     <tr>
         <th>
@@ -46,14 +49,14 @@
                 @Html.DisplayFor(modelItem => item.Discount)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", "OrderDetail", new { product = item.ProductID, order = item.OrderID }, null) |
+                @Html.ActionLink("Details", "Details", "OrderDetail", new { product = item.ProductID, order = item.OrderID }, null) |
+                @Html.ActionLink("Delete", "Delete", "OrderDetail", new { product = item.ProductID, order = item.OrderID }, null)
             </td>
         </tr>
     }
-    <p>
-        @Html.ActionLink("Continue shopping", "Index", "Products", new { }, null)
-    </p>
 
 </table>
+<p>
+    @Html.ActionLink("Continue shopping", "Index", "Products", new { }, null)
+</p>
