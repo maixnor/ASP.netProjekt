@@ -401,6 +401,8 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\DashAdmin\Index.cshtml" />
     <Content Include="Views\DashCustomer\Login.cshtml" />
+    <Content Include="Views\DashCustomer\Cart.cshtml" />
+    <Content Include="Views\DashCustomer\OrderProduct.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

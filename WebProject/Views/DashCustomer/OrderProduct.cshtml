@@ -1,0 +1,40 @@
+﻿@model WebProject.Order_Detail
+
+@{
+    ViewBag.Title = "OrderProduct";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<h2>OrderProduct</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Order_Detail</h4>
+        <hr />
+
+        <h2>Buy @ViewBag.Product</h2>
+
+        <h4>For @ViewBag.UnitPrice a piece</h4>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="To the cart" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("I don't want this", "Index", "Products", new { }, null)
+</div>

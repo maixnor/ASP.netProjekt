@@ -17,18 +17,47 @@ namespace WebProject.Controllers
     {
         private Northwind db = new Northwind();
 
-        public ActionResult OrderProduct(int? product)
+        public ActionResult Cart()
         {
             if (Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
-            Order_Detail detail = new Order_Detail();
-            detail.Product = db.Products.Find(product);
-            // todo tilli
-            Order order = db.Orders.Add(new Order());
-            order.CustomerID = (string)Session["cid"];
-            db.Orders.Add(order);
+            if (Session["orderid"] == null)
+            {
+                return View(new List<Order_Detail>());
+            }
+            var orders = db.Order_Details.Where(t => t.OrderID == (int)Session["orderid"]);
+            return View(orders.ToList());
+        }
+
+        public ActionResult OrderProduct(int product)
+        {
+            if (Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            // order
+            if (Session["orderid"] == null)
+            {
+                // get new order with coresponding id
+                Order order = db.Orders.Create();
+                db.SaveChanges();
+                Session["orderid"] = order.OrderID;
+                order.CustomerID = (string)Session["cid"];
+            }
+            var prod = db.Products.Find(product);
+            ViewBag.Product = prod.ProductName;
+            ViewBag.UnitPrice = prod.UnitPrice;
             db.SaveChanges();
-            // todo
+            // order details with the product
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult OrderProduct([Bind(Include = "OrderID,ProductID,Quantity")]Order_Detail detail)
+        {
+            if (Session["orderid"] == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized); 
+            detail.OrderID = (int)Session["orderid"];
+            db.Order_Details.Add(detail);
+            db.SaveChanges();
+            return RedirectToAction("Cart");
         }
 
         public ActionResult Logoff()
@@ -122,7 +151,6 @@ namespace WebProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CompanyName", order.CustomerID);
             ViewBag.EmployeeID = new SelectList(db.Employees, "EmployeeID", "LastName", order.EmployeeID);
             ViewBag.ShipVia = new SelectList(db.Shippers, "ShipperID", "CompanyName", order.ShipVia);
