@@ -146,6 +146,7 @@ namespace WebProject.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Model = db.Order_Details.Where(t => t.OrderID == order.OrderID).ToList();
             return View(order);
         }
 

@@ -8,6 +8,10 @@
 <h2>Details</h2>
 
 <div>
+    @Html.Partial("PartialOrderDetails", ViewBag.Model as List<WebProject.Order_Detail>)
+</div>
+
+<div>
     <h4>Order</h4>
     <hr />
     <dl class="dl-horizontal">

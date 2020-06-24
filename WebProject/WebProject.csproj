@@ -403,6 +403,8 @@
     <Content Include="Views\DashCustomer\Login.cshtml" />
     <Content Include="Views\DashCustomer\Cart.cshtml" />
     <Content Include="Views\DashCustomer\OrderProduct.cshtml" />
+    <Content Include="Views\DashCustomer\PartialOrderDetails.cshtml" />
+    <Content Include="Views\DashCustomer\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
