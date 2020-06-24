@@ -17,17 +17,31 @@ namespace WebProject.Controllers
     {
         private Northwind db = new Northwind();
 
-        public ActionResult OrderProduct(int? product)
+        public ActionResult OrderProduct(int product, short qty = 1)
         {
+            Order order = null;
             if (Session["cid"] == null) return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            if (Session["orderid"] != null)
+            {
+                order = db.Orders.Find(Session["orderid"]);
+            }
+            if (order == null)
+            {
+                // todo: use current draft order
+                // order = db.Orders.Where(o => o.CustomerID == Session["cid"] && o.StatusID == 0);
+                // if no draft order available, create new one
+                if (order == null)
+                {
+                    order = db.Orders.Add(new Order());
+                    order.CustomerID = (string)Session["cid"];
+                    db.Orders.Add(order);
+                }
+            }
             Order_Detail detail = new Order_Detail();
-            detail.Product = db.Products.Find(product);
-            // todo tilli
-            Order order = db.Orders.Add(new Order());
-            order.CustomerID = (string)Session["cid"];
-            db.Orders.Add(order);
+            detail.ProductID = product;
+            detail.Quantity = qty;
             db.SaveChanges();
-            // todo
+            Session["orderid"] = order.OrderID;
             return View();
         }
 
