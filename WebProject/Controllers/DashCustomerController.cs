@@ -24,7 +24,7 @@ namespace WebProject.Controllers
             var order = db.Orders.Find(Session["orderid"]);
             order.Status = 1;
             db.SaveChanges();
-            Session["orderid"] = null; // closes cart and opens a new one when needed again
+            Session["orderid"] = null; // closes cart, new one will be opened when needed again
             return RedirectToAction("Index");
         }
 
@@ -37,6 +37,8 @@ namespace WebProject.Controllers
             }
             int orderid = (int)Session["orderid"];
             var orders = db.Order_Details.Where(t => t.OrderID == orderid);
+            ViewBag.Order = db.Orders.Find(orderid);
+            ViewBag.ShipVia = new SelectList(db.Shippers, "ShipperID", "CompanyName");
             return View(orders.ToList());
         }
 

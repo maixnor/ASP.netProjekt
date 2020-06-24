@@ -405,6 +405,7 @@
     <Content Include="Views\DashCustomer\OrderProduct.cshtml" />
     <Content Include="Views\DashCustomer\PartialOrderDetails.cshtml" />
     <Content Include="Views\DashCustomer\Edit.cshtml" />
+    <Content Include="Views\DashCustomer\PartialOrder.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

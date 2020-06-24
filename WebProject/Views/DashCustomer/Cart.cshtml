@@ -60,3 +60,11 @@
 <p>
     @Html.ActionLink("Continue shopping", "Index", "Products", new { }, null)
 </p>
+@if (ViewBag.Order != null)
+{
+    <h1>Order</h1>
+    <div>
+        @Html.Partial("PartialOrder", ViewBag.Order as WebProject.Order)
+    </div>
+}
+
