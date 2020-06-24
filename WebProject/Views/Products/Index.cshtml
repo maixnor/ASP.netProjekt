@@ -84,7 +84,7 @@
                         @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
                         @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })|
-                        @Html.ActionLink("Order Details", "Index", "OrderDetail", new { product = item.ProductID }, null)
+                        @Html.ActionLink("Order Details?", "Index", "OrderDetail", new { product = item.ProductID }, null)
                     </td>
                 }
                 else if (Session["cid"] != null)

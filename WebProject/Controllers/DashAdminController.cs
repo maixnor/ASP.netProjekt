@@ -30,7 +30,7 @@ namespace WebProject.Controllers
                 {
                     //logout admin
                     Session.Clear();
-                    FormsAuthentication.SignOut();
+                    //FormsAuthentication.SignOut();
                     // log in customer
                     FormsAuthentication.SetAuthCookie(customer.CustomerID, false);
                     Session["cid"] = customer.CustomerID;
